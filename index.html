@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS LINK -->
+    <link href="./style.css" rel="stylesheet" />
+    <!-- BOOTSTRAP LINKS -->
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-cSfiDrYfMj9eYCidq//oGXEkMc0vuTxHXizrMOFAaPsLt1zoCUVnSsURN+nef1lj" crossorigin="anonymous">
+    
+    <!-- JQUERY LINK -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <title>3steps form</title>
+</head>
+<body>
+    <form asp-page="./Index" asp-page-handler="Create" id="saveForm" class="createWorkshopForm
+        col-sm-10 col-md-10 col-xs-12 col-lg-8" autocomplete="off" method="post" data-ajax="true" data-callback=""
+        data-action="Refresh">
+        <fieldset id="saveWorkshop" class="content-fieldset mt-5">
+            <legend class="main-title">فرم مشخصات </legend>
+            <div class="form-box">
+                <div class="steps">
+                    <div class="progressBar"></div>
+                    <div class="step"> مرحله اول  </div>
+                    <div class="step"> مرحله دوم  </div>
+                    <div class="step">   مرحله سوم </div>
+                </div>
+                <div class="form form1">
+                    <div class="row inputs">
+                        <div class="right col-md-4 col-sm-6 col-xs-6">
+                            <label class="input-label">نام  <span style="color: red;">*</span></label>
+                            <input type="text" class="form-control not-empty" pattern="[\u0600-\u06FF\s]*"/>
+                            <i class="fa fa-exclamation-circle error-icon"></i>
+                            <p class="error-message">فقط حروف فارسی وارد شود.</p>
+                        </div>
+                        <div class="right col-md-4 col-sm-6 col-xs-6">
+                            <label class="input-label"> نام خانوادگی <span style="color: red;">*</span></label>
+                            <input type="text" placeholder="" class="form-control not-empty"
+                                pattern="[\u0600-\u06FF\s]*" />
+                            <i class="fa fa-exclamation-circle error-icon"></i>
+                            <p class="error-message">فقط حروف فارسی وارد شود.</p>
+                        </div>
+                        <div class="right col-md-2 col-sm-6 col-xs-6">
+                            <label class="input-label"> نوع تملک </label>
+                            <select class="form-control">
+                                <option value="" selected class="input"> </option>
+                                <option value="">مالکیت</option>
+                                <option value="">استیجاری</option>
+                            </select>
+                        </div>
+                        <div class="right col-md-2 col-sm-6 col-xs-6">
+                            <label class="input-label">شماره ملی</label>
+                            <input type="text" class="form-control text-center" pattern="\d*" />
+                            <i class="fa fa-exclamation-circle error-icon"></i>
+                            <p class="error-message">فقط عدد وارد شود.</p>
+                        </div>
+                    </div>
+    
+                    <div class="row inputs">
+                        <div id="divState" class="right col-md-4 col-sm-4 col-xs-4">
+                            <label class="input-label">نام استان </label>
+                            <select class="form-control" name="state">
+                                <option value="">انتخاب استان</option>
+                                <option value="تهران"> تهران </option>
+                                <option value="گیلان"> گیلان </option>
+                                <option value="آذربایجان شرقی"> آذربایجان شرقی</option>
+                                <option value="خوزستان"> خوزستان </option>
+                                <option value="فارس"> فارس</option>
+                                <option value="اصفهان"> اصفهان</option>
+                                <option value="خراسان رضوی">خراسان رضوی </option>
+                                <option value="قزوین"> قزوین</option>
+                                <option value="سمنان"> سمنان </option>
+                                <option value="قم"> قم</option>
+                                <option value="مرکزی"> مرکزی</option>
+                                <option value="زنجان"> زنجان</option>
+                                <option value="مازندران"> مازندران</option>
+                                <option value="گلستان"> گلستان</option>
+                                <option value="اردبیل"> اردبیل </option>
+                                <option value="آذربایجان غربی"> آذربایجان غربی</option>
+                                <option value="همدان"> همدان </option>
+                                <option value="کردستان"> کردستان </option>
+                                <option value="کرمانشاه"> کرمانشاه </option>
+                                <option value="لرستان"> لرستان</option>
+                                <option value="بوشهر"> بوشهر</option>
+                                <option value="کرمان"> کرمان</option>
+                                <option value="هرمزگان"> هرمزگان</option>
+                                <option value="چهارمحال و بختیاری"> چهارمحال و بختیاری</option>
+                                <option value="یزد"> یزد</option>
+                                <option value="سیستان و بلوچستان"> سیستان و بلوچستان</option>
+                                <option value="ایلام"> ایلام</option>
+                                <option value="کهگلویه و بویراحمد"> کهگلویه و بویراحمد</option>
+                                <option value="خراسان شمالی"> خراسان شمالی</option>
+                                <option value="خراسان جنوبی"> خراسان جنوبی</option>
+                                <option value="البرز"> البرز</option>
+                            </select>
+                        </div>
+                        <div id="divCity" class="right col-md-4 col-sm-4 col-xs-4">
+                            <label class="input-label">نام شهر</label>
+                            <select class="form-control" name="cityy" id="city">
+                                <option value="0" placeholder="انتخاب شهر"> </option>
+                            </select>
+                            <input type="hidden" value="" id="hide2">
+                        </div>
+                        <div class="right col-md-4 col-sm-4 col-xs-4 zone-wrapper">
+                            <div class="right w-100">
+                                <label class="input-label">نام محله </label>
+                                <input type="text" class="right col-md-10 form-control"
+                                    pattern="[\u0600-\u06FF\s]*" />
+                                <i class="fa fa-exclamation-circle error-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row inputs">
+                        <div class="right col-md-12 col-sm-12 col-xs-12">
+                            <label class="input-label">جزئیات نشانی </label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form form2">
+                    <div class="flex-box">
+                        <div class="row input-boxes">
+                            <fieldset class="right col-md-12 col-sm-12 col-xs-12 content-fieldset contract-box">
+                                <div class="form2-title">لطفا مدت را انتخاب کنید :</div>
+                                <div class="col-md-1"></div>
+                                <div class="flexible-div flexible-radio col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 spanBox">
+                                        <span
+                                            class="btn btn-deactive btn-rounded waves-effect waves-light contractDuration">1
+                                            ماهه</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 spanBox">
+                                        <span
+                                            class="btn btn-deactive btn-rounded waves-effect waves-light contractDuration">2
+                                            ماهه</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 spanBox">
+                                        <span
+                                            class="btn btn-deactive btn-rounded waves-effect waves-light contractDuration">3
+                                            ماهه</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 spanBox">
+                                        <span
+                                            class="btn btn-deactive btn-rounded waves-effect waves-light contractDuration">6
+                                            ماهه</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 spanBox">
+                                        <span
+                                            class="btn btn-deactive btn-rounded waves-effect waves-light contractDuration">1
+                                            ساله</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 spanBox">
+                                        <span
+                                            class="btn btn-deactive btn-rounded waves-effect waves-light contractDuration">دائمی</span>
+                                    </div>
+                                    <input type="hidden" id="asp-contract-hidden" />
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="row input-boxes">
+                            <div class="options-box right col-md-12">
+                                <div class="form2-title"> گزینه های موردنظر را فعال نمایید </div>
+                                <div class="optional-wages flexible-div">
+                                    <div class="d-flex options-check col-lg-6 col-md-6 col-sm-6 col-xs-7">
+                                        <div class="checkbox-wrapper-2">
+                                            <label class="toggleButton">
+                                                <input type="checkbox" class="activated">
+                                                <div>
+                                                    <svg viewBox="0 0 44 44">
+                                                        <path
+                                                            d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758"
+                                                            transform="translate(-2.000000, -2.000000)"></path>
+                                                    </svg>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <span class="options-type"> گزینه اول  </span>
+                                    </div>
+                                    <div class="d-flex options-check col-lg-6 col-md-6 col-sm-6 col-xs-7">
+                                        <div class="checkbox-wrapper-2">
+                                            <label class="toggleButton">
+                                                <input type="checkbox" class="activated">
+                                                <div>
+                                                    <svg viewBox="0 0 44 44">
+                                                        <path
+                                                            d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758"
+                                                            transform="translate(-2.000000, -2.000000)"></path>
+                                                    </svg>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <span class="options-type">گزینه دوم  </span>
+                                    </div>
+                                    <div class="d-flex options-check col-lg-6 col-md-6 col-sm-6 col-xs-7">
+                                        <div class="checkbox-wrapper-2">
+                                            <label class="toggleButton">
+                                                <input type="checkbox" class="activated">
+                                                <div>
+                                                    <svg viewBox="0 0 44 44">
+                                                        <path
+                                                            d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758"
+                                                            transform="translate(-2.000000, -2.000000)"></path>
+                                                    </svg>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <span class="options-type"> گزینه سوم</span>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row inputs">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            <div class="optional-wages d-flex">
+                                <div class="d-flex single-checkbox">
+                                    <span class="options-type" style="width: 100%;"> میخواهم از خبرهای جدید مطلع شوم </span>
+                                    <div class="checkbox-wrapper-2">
+                                        <label class="toggleButton">
+                                            <input type="checkbox" class="activated" @*data-val="true" *@
+                                                @*data-val-required="The AddLeavePay field is required." *@
+                                                @*id="AddLeavePay" *@ @*name="AddLeavePay" *@ value="true">
+                                            <div>
+                                                <svg viewBox="0 0 44 44">
+                                                    <path
+                                                        d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758"
+                                                        transform="translate(-2.000000, -2.000000)"></path>
+                                                </svg>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form form3">
+                    <div class="row inputs">
+                        <div class="right col-md-12 col-xs-12 form3-boxes">
+                            <div class="right col-md-6 col-sm-4 col-xs-12">
+                                <label class="input-label d-block"><input type="checkbox" value="NormalList"
+                                        class="checkboxes sendList">  گزینه اول </label>
+                                <label class="input-label d-block"><input type="checkbox" value="Govermentlist"
+                                        class="checkboxes sendList"> گزینه دوم </label>
+                                <label class="input-label d-block"><input type="checkbox" value="Familylist"
+                                        class="checkboxes sendList">  گزینه سوم </label>
+                            </div>
+                            <div class="right col-md-3 col-sm-4 col-xs-6 disabled insuranceCode">
+                                <label class="input-label">کد کارگاه</label>
+                                <input type="text" class="form-control text-center" pattern="\d*" />
+                                <i class="fa fa-exclamation-circle error-icon"></i>
+                                <p class="error-message">فقط عدد وارد شود.</p>
+                            </div>
+                            <div class="right col-md-3 col-sm-4 col-xs-6 disabled AgreementNumber">
+                                <label class="input-label"> کد شناسایی </label>
+                                <input type="text" value="000" class="form-control" id="zeros"
+                                    pattern="\d*" />
+                                <i class="fa fa-exclamation-circle error-icon"></i>
+                                <p class="error-message">فقط عدد وارد شود.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row inputs">
+                        <div class="right col-md-12 col-xs-12 form3-boxes disabled fixedSalarySection">
+                            <div class="right col-md-12 col-xs-12" style="margin-bottom: 10px;">
+                                <label class="input-label"><input type="checkbox" class="fixedSalary checkboxes"> افزودن اطلاعات شهر</label>
+                            </div>
+                            <div class="disabled insuranceJob">
+                                <div>
+                                    <div id="divInsuranceJobId" class="right col-md-8 col-sm-6 col-xs-6">
+                                        <label class="input-label"> عنوان شهر </label>
+                                        <select class="select-city form-control" id="createjobName">
+                                            <option value="" disabled selected> </option>
+                                        </select>
+                                    </div>
+                                    <div class="right col-md-4 col-sm-6 col-xs-6">
+                                        <label class="input-label"> جمعیت شهر </label>
+                                        <select class="input" id="population">
+                                            <option value="" disabled selected> </option>
+                                            <option value="LessThan500">کمتر از 500000 نفر </option>
+                                            <option value="MoreThan500">بیشتر از 500000 نفر</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <input type="hidden" id="isLegal" value="@isLegal" />
+                <div class="form-footer-btns">
+                    <a class="btn btn-modal pre" onclick="prevButton($(this))">مرحله قبل</a>
+                    <a class="btn btn-modal next" onclick="nextButton($(this))">مرحله بعد</a>
+                </div>
+    
+            </div>
+            <div class="form-footer">
+                <a class="btn btn-rounded waves-effect waves-light bg-white closeForm">بستن</a>
+                <a href="#" class=" btn btn-success btn-rounded waves-effect waves-light aEmployers save">ذخیره</a>
+            </div>
+        </fieldset>
+    </form>
+
+    <script src="https://cdn.rtlcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-B4D+9otHJ5PJZQbqWyDHJc6z6st5fX3r680CYa0Em9AUG6jqu5t473Y+1CTZQWZv"
+        crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+</body>
+
+
+</html>
+
+
+
